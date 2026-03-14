@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Приглашение на свадьбу Карины и Евгения">
+    <title>Карина & Евгений | Свадебное приглашение</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/media-queries.css">
+</head>
+<body>
+    <!-- Welcome Screen с музыкой -->
+<div class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-content">
+        <div class="welcome-hearts">
+            <img src="images/icons/heart.webp" alt="Сердце" class="welcome-heart">
+            <img src="images/icons/heart.webp" alt="Сердце" class="welcome-heart">
+            <img src="images/icons/heart.webp" alt="Сердце" class="welcome-heart">
+        </div>
+        <h1 class="welcome-title">Карина & Евгений</h1>
+        <p class="welcome-subtitle">Приглашаем вас на нашу свадьбу</p>
+        <p class="welcome-date">07 августа 2026</p>
+        <p class="loader-timezone">
+            <img src="images/icons/clock.png" alt="Часы" class="loader-timezone-icon">
+            Обратите внимание, что все временные метки указаны по Москве (UTC+3)
+        </p>  
+        <button class="welcome-btn" id="enterSiteBtn">
+            <span class="btn-text">Открыть приглашение</span>
+            <span class="btn-icon">🎵</span>
+        </button>
+        <p class="welcome-note">🎵 Включите звук для атмосферы</p>
+    </div>
+</div>
+
+<!-- Аудио плеер (скрытый) -->
+<audio id="weddingMusic" loop preload="auto">
+    <source src="audio/wedding-song.mp3" type="audio/mpeg">
+    <source src="audio/wedding-song.ogg" type="audio/ogg">
+    Ваш браузер не поддерживает аудио.
+</audio>
+
+<!-- Кнопка управления музыкой (плавающая) -->
+<button class="music-control" id="musicControl" title="Включить/выключить музыку">
+    <span class="music-icon">🔊</span>
+</button>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-hearts">
+                <span><img src="images/icons/hearts.avif" alt="Карина и Евгений" class="hero-photo"></span>
+                <span><img src="images/icons/hearts.avif" alt="Карина и Евгений" class="hero-photo"></span>
+                <span><img src="images/icons/hearts.avif" alt="Карина и Евгений" class="hero-photo"></span>
+            </div>
+            <p class="loader-text">Загрузка...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <div class="nav-logo">К & Е</div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Главная</a></li>
+                <li><a href="#about" class="nav-link">О нас</a></li>
+                <li><a href="#schedule" class="nav-link">Программа</a></li>
+                <li><a href="#location" class="nav-link">Место</a></li>
+                <li><a href="#details" class="nav-link">Детали</a></li>
+                <li><a href="#rsvp" class="nav-link nav-link--accent" id="navConfirmBtn">Подтвердить</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg-overlay"></div>
+        <div class="container hero-container">
+            <div class="hero-content fade-in">
+                <p class="hero-subtitle">Приглашаем вас на нашу свадьбу</p>
+                <h1 class="hero-title">
+                    <span class="hero-name">Карина</span>
+                    <span class="hero-ampersand">&</span>
+                    <span class="hero-name">Евгений</span>
+                </h1>
+                <div class="hero-date">
+                    <span class="date-day">07</span>
+                    <span class="date-month">августа</span>
+                    <span class="date-year">2026</span>
+                </div>
+                <div class="hero-scroll">
+                    <span>Листайте вниз</span>
+                    <div class="scroll-arrow">↓</div>
+                </div>
+            </div>
+            <div class="hero-image fade-in-delay">
+                <div class="image-frame">
+                    <img src="images/hero/couple-main.jpg" alt="Карина и Евгений" class="hero-photo">
+                    <div class="image-frame-decor"></div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-decoration">
+            <div class="decor-circle decor-circle--1"></div>
+            <div class="decor-circle decor-circle--2"></div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="countdown-section">
+        <div class="container">
+            <h2 class="section-title fade-in">До нашего особенного дня</h2>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">дней</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">часов</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">минут</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">секунд</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome Section -->
+    <section class="welcome" id="about">
+        <div class="container">
+            <div class="welcome-content fade-in">
+                <h2 class="section-title">Дорогие гости!</h2>
+                    <div class="welcome-text">
+                        <p>Мы приглашаем вас разделить с нами радостный день, в который мы станем семьей!</p>
+                        <p>Этот день будет наполнен любовью, счастьем и теплом близких людей. Мы хотим провести его вместе с вами — теми, кто дорог нам и кто был рядом на нашем пути.</p>
+                        <p>Ваши улыбки, поддержка и добрые пожелания сделают этот день еще более особенным!</p>
+                    </div>
+                <div class="welcome-signature">
+                    <p>С любовью,</p>
+                    <p class="signature-names">Карина и Евгений</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Schedule/Timeline --> 
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <h2 class="section-title fade-in">Программа дня</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">16:30</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Сбор гостей</h3>
+                        <p class="timeline-description">Время пролетит незаметно за общением с другими гостями</p>
+                        <img src="images/icons/carriage.png" alt="Бокалы шампанского" class="timeline-icon">
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">17:00</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Торжество</h3>
+                        <p class="timeline-description">Будет много танцев, веселья, поздравлений и, конечно, любви</p>
+                        <img src="images/icons/marriage.png" alt="Обручальные кольца" class="timeline-icon">
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-time">23:00</div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Окончание вечера</h3>
+                        <p class="timeline-description">Вы станете свидетелями создания новой семьи — нашей семьи</p>
+                        <img src="images/icons/dove.png" alt="Праздник" class="timeline-icon">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location -->
+    <section class="location" id="location">
+        <div class="container">
+            <h2 class="section-title fade-in">Место проведения</h2>
+            <div class="location-wrapper fade-in">
+                <div class="location-info">
+                    <h3 class="location-name">Орловский дворец зал "Милли"</h3>
+                    <p class="location-address">Орловская улица, 209</p>
+                    <div class="location-details">
+                        <div class="detail-item">
+                            <img src="images/icons/location-pin.png" alt="Адрес" class="detail-icon">
+                            <span class="detail-text">посёлок Орловка, г. Набережные Челны</span>
+                        </div>
+                        <div class="detail-item">
+                            <img src="images/icons/parking.png" alt="Парковка" class="detail-icon">
+                            <span class="detail-text">Парковка для гостей</span>
+                        </div>
+                    </div>
+                    <a href="https://yandex.ru/maps/-/CPFAvTjS" class="btn btn--primary" id="openMapBtn">Открыть карту</a>
+                </div>
+                <div class="location-map" id="yandexMap"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">Наша история любви</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="images/gallery/photo1.jpg" alt="Наша история" loading="lazy">
+                    <div class="gallery-overlay">
+                        <p>День, когда мы вступили в отношения</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/gallery/photo2.jpg" alt="Вместе" loading="lazy">
+                    <div class="gallery-overlay">
+                        <p>Примерили на себе боярский образ</p>
+                    </div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="images/gallery/photo3.jpg" alt="Момент счастья" loading="lazy">
+                    <div class="gallery-overlay">
+                        <p>День, когда Карина сказала: "ДА"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Details Cards -->
+    <section class="details" id="details">
+        <div class="container">
+            <h2 class="section-title fade-in">Несколько просьб</h2>
+            <div class="details-grid">
+                <div class="details-card fade-in">
+                    <img src="images/icons/dress-code.png" alt="Дресс-код" class="card-icon">
+                    <h3 class="card-title">Дресс-код</h3>
+                    <p class="card-text">Нам будет приятно, если вы поддержите цветовую палитру нашего праздника и выберете наряды в нежных пастельных оттенках.</p>
+                    <div class="color-palette">
+                        <div class="color-item" style="background-color: #e7e7c9;"></div>
+                        <div class="color-item" style="background-color: #fdbfd7;"></div>
+                        <div class="color-item" style="background-color: #e3b2ff;"></div>
+                        <div class="color-item" style="background-color: #8f8fff;"></div>
+                        <div class="color-item" style="background-color: #65b465;"></div>
+                        <div class="color-item" style="background-color: #565764;"></div>  
+                        <div class="color-item" style="background-color: #783c11;"></div>  
+                    </div>
+                </div>
+                <div class="details-card fade-in">
+                    <img src="images/icons/gift.png" alt="Подарки" class="card-icon">
+                    <h3 class="card-title">Подарки</h3>
+                    <p class="card-text">Если хотите подарить ценный и нужный нам подарок — мы будем рады вкладу в наше семейное будущее.</p>
+                </div>
+                <div class="details-card fade-in">
+                    <img src="images/icons/childfree.png" alt="Без детей" class="card-icon">
+                    <h3 class="card-title">Дети</h3>
+                <p class="card-text">Пожалуйста, учитывайте, что наше торжество ориентировано исключительно на взрослых, поэтому просим оставить детей дома. Надеемся на ваше понимание.</p>
+                </div>
+                <div class="details-card fade-in">
+                    <img src="images/icons/flowers.png" alt="Без цветов" class="card-icon">
+                    <h3 class="card-title">Цветы</h3>
+                <p class="card-text">Предлагаем не мучить цветы долгой дорогой и заменить их бутылочкой любого приятного напитка, которым мы сможем наслаждаться вместе с вами в теплые вечера.</p>
+                </div>
+                <div class="details-card fade-in">
+                    <img src="images/icons/gorko.png" alt="Горько!" class="card-icon">
+                    <h3 class="card-title">Горько</h3>
+                <p class="card-text">От всего сердца просим воздержаться от криков "Горько!" и сохранить атмосферу уютного семейного праздника.</p>
+                </div>
+                <div class="details-card fade-in">
+                    <img src="images/icons/phone.png" alt="Контакты" class="card-icon">
+                    <h3 class="card-title">Контакты</h3>
+                    <p class="card-text">По всем вопросам обращайтесь:</p>
+                    <div class="contacts">
+                            <p>Карина: <a href="tel:+79871832161">+7 (987) 183-21-61</a></p>
+                            <p>Евгений: <a href="tel:+79043165927">+7 (904) 316-59-27</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<!-- Details Cards -->
+
+    <!-- RSVP Section -->
+    <section class="rsvp" id="rsvp">
+        <div class="container">
+            <div class="rsvp-wrapper fade-in">
+                <h2 class="section-title">Подтвердите участие</h2>
+                <p class="rsvp-subtitle">Пожалуйста, заполните форму до 1 мая 2026 года</p>
+                <div class="rsvp-form-container">
+                    <a 
+                        href="https://forms.yandex.ru/u/69b5a220eb61465ad75eb93b" 
+                        target="_blank" 
+                        rel="noopener"
+                        class="btn btn--primary btn--full"
+                    >
+                        Заполнить форму подтверждения
+                    </a>
+                    <p style="text-align: center; margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                    </p>
+                </div>
+                <div class="rsvp-alternative">
+                    <p>Или напишите нам:</p>
+                    <div class="social-links">
+                        <a href="https://t.me/malenkaykari" class="social-link" target="_blank" rel="noopener">Telegram</a>
+                        <a href="https://vk.ru/malenkaykari" class="social-link" target="_blank" rel="noopener">VK</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-names">Карина & Евгений</p>
+                <p class="footer-date">07 августа 2026</p>
+                <p class="footer-love">С любовью ❤</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating RSVP Button (Mobile) -->
+    <button class="floating-rsvp" id="floatingRsvp">
+        <span>Подтвердить участие</span>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="js/timer.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
