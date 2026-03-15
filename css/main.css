@@ -1158,7 +1158,162 @@ ul {
     color: #b0aafa;
     border-bottom-color: #b0aafa;
 }
+/* ===== DRESS CODE ===== */
+/* ===== DRESS CODE ===== */
+.dress-code {
+    padding: var(--section-padding);
+    background: var(--color-white);
+    position: relative;
+}
 
+.dress-code-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dress-code-text {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--color-text);
+    margin-bottom: 50px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Сетка для цветов */
+.color-swatches {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+/* Размытые 3D капли */
+.color-swatch {
+    width: 80px;
+    height: 80px;
+    position: relative;
+    cursor: pointer;
+    /* Органическая форма капли */
+    border-radius: 50% 40% 60% 40% / 50% 45% 55% 50%;
+    /* Размытие для эффекта "замыливания" */
+    filter: blur(1px);
+    transition: all 0.3s ease;
+    /* Многослойные тени с размытием */
+    box-shadow: 
+        inset -8px -8px 20px rgba(0, 0, 0, 0.3),
+        inset 8px 8px 20px rgba(255, 255, 255, 0.4),
+        8px 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Размытый блик для эффекта мягкости */
+.color-swatch::before {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 40%;
+    height: 30%;
+    background: radial-gradient(
+        ellipse at center, 
+        rgba(255, 255, 255, 0.9) 0%, 
+        rgba(255, 255, 255, 0.3) 50%, 
+        transparent 70%
+    );
+    border-radius: 50%;
+    filter: blur(3px);
+    transform: rotate(-45deg);
+}
+
+/* Дополнительный размытый блик */
+.color-swatch::after {
+    content: attr(data-color);
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2D2D2D;
+    white-space: nowrap;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 6px 12px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* Hover эффекты */
+.color-swatch:hover {
+    transform: scale(1.15) translateY(-8px);
+    filter: blur(0.5px);
+    box-shadow: 
+        inset -8px -8px 20px rgba(0, 0, 0, 0.3),
+        inset 8px 8px 20px rgba(255, 255, 255, 0.4),
+        15px 25px 40px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+}
+
+/* Подпись появляется ТОЛЬКО при наведении НА ЭТУ КАПЛЮ */
+.color-swatch:hover::after {
+    opacity: 1;
+    visibility: visible;
+    bottom: -45px;
+}
+
+/* Адаптация для планшетов */
+@media (max-width: 992px) {
+    .color-swatches {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .color-swatches {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+    
+    .color-swatch {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .dress-code-text {
+        font-size: 1rem;
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+    
+    .color-swatch:hover::after {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+        bottom: -40px;
+    }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 480px) {
+    .color-swatches {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    
+    .color-swatch {
+        width: 60px;
+        height: 60px;
+    }
+}
 /* ===== RSVP ===== */
 .rsvp {
     padding: var(--section-padding);
